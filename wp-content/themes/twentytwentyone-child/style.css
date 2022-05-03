@@ -162,19 +162,9 @@ ul.top-menu ul > li{                                        /* Separator */
   color: #fb5;
   border-color: #555;
 }
-div.custom-menu-class ul {
-  margin:20px 0px 20px 0px;
-  list-style-type: none;
-  list-style: none;
-  list-style-image: none;
-  text-align:right;
-  display:inline-block;   
-}
-div.custom-menu-class li {
-  padding: 0px 20px 0px 0px;
-  display: inline-block;
-} 
 
-div.custom-menu-class a { 
-  color:#000;
+@media (min-width:767px){
+  .registration{
+    max-width: 400px;
+  }
 }
