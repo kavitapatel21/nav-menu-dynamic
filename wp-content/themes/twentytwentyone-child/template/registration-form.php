@@ -5,42 +5,55 @@
  */
 get_header();
 ?>
+<?php
+ $rnd = rand(1,100000);;
+//echo $rnd;
+?>
 <div class="container">
 	<div class="registration mx-auto d-block w-100">
 		<div class="page-header text-center">
 			<h1>Registration-Form</h1>
 		</div>
-		<form id="registration-form" action="" method="post" class="" enctype="multipart/form-data" name="registration-form">
+		<form id="registration-form" action="upload.php" method="post" class="" name="registration-form" enctype="multipart/form-data">
 			<fieldset>
 				<div class="form-group">
-					<label for="exampleInputFirstName">FirstName </label>
+					<label for="firstname">FirstName </label>
 					<input type="text" class="form-control" id="firstname" name="firstname">
 				</div>
                 <div class="form-group">
-					<label for="exampleInputLastName">LastName </label>
+					<label for="lastname">LastName </label>
 					<input type="text" class="form-control" id="lastname" name="lastname">
 				</div>
                 <div class="form-group">
-					<label for="exampleInputEmail1">Email Address </label>
+					<label for="email">Email Address </label>
 					<input type="email" class="form-control" id="email" name="email">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputUserName">Username </label>
+					<label for="username">Username </label>
 					<input type="text" class="form-control" id="username" name="username">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPhoneNo">Phone No </label>
+					<label for="phoneno">Phone No </label>
 					<input type="text" class="form-control" id="phoneno" name="phoneno">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputReferenceId">Reference Id </label>
-					<input type="text" class="form-control" id="referenceid" name="referenceid" onclick="Random()">
+					<label for="referenceid">Reference Id </label>
+					<input type="text" class="form-control" id="referenceid" name="referenceid">
 				</div>
+				<div class="form-group">
+					<label for="documnet">Document Uploaded</label><br>
+					Idproof   :    <input type="file" name="idproof" id="idproof">
+					Passbook  :   <input type="file" name="passbook" id="passbook">
+					Pancard   :    <input type="file" name="pancard" id="pancard">
+				</div> 
 				<div class="d-flex justify-content-between align-items-center">
 					<div class="form-group d-flex justify-content-start">
 						<button type="button" class="btn btn-primary" name="register" id="btn-register">Register</button>
 					</div>
 				</div>
+				
+					<input type="hidden" class="form-control" id="referencecode" name="referencecode" value="<?php echo $rnd; ?>">
+			
 			</fieldset>
 		</form>
 	</div>
@@ -87,14 +100,24 @@ messages: {
  $('#btn-register').click(function(){
     var form =  $("#registration-form");
     if (form.valid()) {
+		var firstname = $('#firstname').val().trim();
+		var lastname = $('#lastname').val().trim();
         var username = $('#username').val().trim();
 		var email = $('#email').val().trim();
+		var referencecode = $('#referencecode').val().trim();
+		var referenceid = $('#referenceid').val().trim();
+		var phoneno = $('#phoneno').val().trim();
                     // AJAX request
                     $.ajax({
                     type: "POST",
 					data: {
+						firstname : firstname,
+						lastname : lastname,
 						username : username,
 						email : email,
+						phoneno : phoneno,
+						referencecode : referencecode,
+						referenceid : referenceid,
 							}, 
                     url: "<?php echo get_stylesheet_directory_uri();?>/template/mailpw.php",
                    // dataType: 'json',
@@ -105,11 +128,17 @@ messages: {
 });
                 }
                 
-            });
-
-
-  function Random() {
-        var rnd = Math.floor(Math.random() * 1000000000);
-        document.getElementById('referenceid').value = rnd;
-    }
+            });    
 </script>
+<?php
+if(isset($_POST['idproof'])){
+	$my_folder = "upload/";
+if (move_uploaded_file($_FILES['idproof']['tmp_name'], $my_folder . $_FILES['idproof']['name'])) {
+    echo 'Received file' . $_FILES['idproof']['name'] . ' with size ' . $_FILES['idproof']['size'];
+} else {
+    echo 'Upload failed!';
+
+    var_dump($_FILES['idproof']['error']);
+}
+}
+?>

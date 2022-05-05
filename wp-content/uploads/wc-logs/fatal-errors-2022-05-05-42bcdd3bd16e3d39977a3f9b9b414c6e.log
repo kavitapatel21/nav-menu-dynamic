@@ -1,0 +1,68 @@
+2022-05-05T06:53:58+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:63
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): add_data_to_custom_users_columns('', 'userid', 89)
+#1 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(592): apply_filters('manage_users_cu...', '', 'userid', 89)
+#3 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(403): WP_Users_List_Table->single_row(Object(WP_User), '', '', 0)
+#4 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1362): WP_Users_List_Table->display_rows()
+#5 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1289): WP_List_Table->display_rows_or_placeholder()
+#6 D:\wamp64\www\navmenu\wp-admin\users.php(651): WP_List_Table->display()
+#7 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 63
+
+2022-05-05T06:56:28+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:63
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): add_data_to_custom_users_columns('', 'userid', 89)
+#1 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(592): apply_filters('manage_users_cu...', '', 'userid', 89)
+#3 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(403): WP_Users_List_Table->single_row(Object(WP_User), '', '', 0)
+#4 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1362): WP_Users_List_Table->display_rows()
+#5 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1289): WP_List_Table->display_rows_or_placeholder()
+#6 D:\wamp64\www\navmenu\wp-admin\users.php(651): WP_List_Table->display()
+#7 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 63
+
+2022-05-05T06:56:31+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:63
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): add_data_to_custom_users_columns('', 'userid', 89)
+#1 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(592): apply_filters('manage_users_cu...', '', 'userid', 89)
+#3 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(403): WP_Users_List_Table->single_row(Object(WP_User), '', '', 0)
+#4 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1362): WP_Users_List_Table->display_rows()
+#5 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1289): WP_List_Table->display_rows_or_placeholder()
+#6 D:\wamp64\www\navmenu\wp-admin\users.php(651): WP_List_Table->display()
+#7 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 63
+
+2022-05-05T06:57:02+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:63
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): add_data_to_custom_users_columns('', 'userid', 89)
+#1 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(592): apply_filters('manage_users_cu...', '', 'userid', 89)
+#3 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(403): WP_Users_List_Table->single_row(Object(WP_User), '', '', 0)
+#4 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1362): WP_Users_List_Table->display_rows()
+#5 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1289): WP_List_Table->display_rows_or_placeholder()
+#6 D:\wamp64\www\navmenu\wp-admin\users.php(651): WP_List_Table->display()
+#7 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 63
+
+2022-05-05T06:59:07+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:63
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): add_data_to_custom_users_columns('', 'userid', 90)
+#1 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(592): apply_filters('manage_users_cu...', '', 'userid', 90)
+#3 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-users-list-table.php(403): WP_Users_List_Table->single_row(Object(WP_User), '', '', 0)
+#4 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1362): WP_Users_List_Table->display_rows()
+#5 D:\wamp64\www\navmenu\wp-admin\includes\class-wp-list-table.php(1289): WP_List_Table->display_rows_or_placeholder()
+#6 D:\wamp64\www\navmenu\wp-admin\users.php(651): WP_List_Table->display()
+#7 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 63
+
+2022-05-05T11:44:34+00:00 CRITICAL syntax error, unexpected ';' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\template\registration-form.php on line 142
+
+2022-05-05T11:45:35+00:00 CRITICAL syntax error, unexpected ';' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\template\registration-form.php on line 142
+
+2022-05-05T11:45:44+00:00 CRITICAL syntax error, unexpected ';' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\template\registration-form.php on line 142
+
+2022-05-05T11:48:04+00:00 CRITICAL syntax error, unexpected ';' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\template\registration-form.php on line 142
+
