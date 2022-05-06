@@ -1,4 +1,20 @@
 <?php
+echo "<pre>";
+print_r($_POST);
+echo "<br>";
+echo "<pre>";
+print_r($_FILES);
+echo "<br>";
+echo 'filename:'.$_FILES['file']['name'];
+$target_path = "upload/";
+$target_path = $target_path . basename( $_FILES['file']['name']); 
+if(move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) {
+   echo "The file ".  basename( $_FILES['file']['name'])."has been uploaded";        
+} else{
+   echo "There was an error uploading the file, please try again!";
+}  
+die;
+
 require_once("../../../../wp-config.php");
 require_once("../../../../wp-load.php");
 
@@ -15,7 +31,7 @@ require_once("../../../../wp-load.php");
 	echo 'username :'.  $_POST['username'];
 	echo '<br>';
 	echo 'referenceid :'.  $_POST['referenceid'];
-	echo '<br>';
+
 
 
     global $wpdb;
@@ -35,5 +51,7 @@ require_once("../../../../wp-load.php");
    // echo $to;
 	$headers = array('Content-Type: text/plain; charset=UTF-8','From:<kavita@plutustec.com>');
 	wp_mail( $to, $subject, $txt, $headers );	
+
+	
 
 ?>

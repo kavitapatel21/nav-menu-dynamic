@@ -14,7 +14,7 @@ get_header();
 		<div class="page-header text-center">
 			<h1>Registration-Form</h1>
 		</div>
-		<form id="registration-form" action="upload.php" method="post" class="" name="registration-form" enctype="multipart/form-data">
+		<form id="registration-form" method="post" name="registration-form" enctype="multipart/form-data">
 			<fieldset>
 				<div class="form-group">
 					<label for="firstname">FirstName </label>
@@ -41,10 +41,11 @@ get_header();
 					<input type="text" class="form-control" id="referenceid" name="referenceid">
 				</div>
 				<div class="form-group">
-					<label for="documnet">Document Uploaded</label><br>
-					Idproof   :    <input type="file" name="idproof" id="idproof">
-					Passbook  :   <input type="file" name="passbook" id="passbook">
-					Pancard   :    <input type="file" name="pancard" id="pancard">
+					
+					Idproof   :    <input type="file" name="my_file[]" id="image" class="project_images"><br>
+					Passbook   :    <input type="file" name="my_file[]" id="passbook" class="project_images"><br>
+					Password   :    <input type="file" name="my_file[]" id="password" class="project_images"><br>
+					
 				</div> 
 				<div class="d-flex justify-content-between align-items-center">
 					<div class="form-group d-flex justify-content-start">
@@ -98,8 +99,9 @@ messages: {
 });
  // Save user 
  $('#btn-register').click(function(){
-    var form =  $("#registration-form");
+   var form =  $("#registration-form");
     if (form.valid()) {
+		//var data= form.serialize();
 		var firstname = $('#firstname').val().trim();
 		var lastname = $('#lastname').val().trim();
         var username = $('#username').val().trim();
@@ -107,19 +109,36 @@ messages: {
 		var referencecode = $('#referencecode').val().trim();
 		var referenceid = $('#referenceid').val().trim();
 		var phoneno = $('#phoneno').val().trim();
+		var fd = new FormData();
+		var count;
+		for(var j=0 ; j<= count ; j++)
+{
+    $.each($(".project_image")[j].files, function (i, file)
+    { 
+         fd.append(j, file);
+     });
+}
+
+       // var files = $('#image')[0].files;     
+		//var files = $('#passbook')[0].files;     
+		//var files = $('#password')[0].files;     
+          // fd.append('file',files[0]);
+		   //fd.append('filepassbook',files[0]);
+		   //fd.append('filepassword',files[0]);
+		   fd.append('firstname',firstname);
+		   fd.append('lastname',lastname);
+		   fd.append('email',email);
+		   fd.append('username',username);
+		   fd.append('referenceid',referenceid);
+		   fd.append('referencecode',referencecode);
+		   fd.append('phoneno',phoneno);
                     // AJAX request
-                    $.ajax({
-                    type: "POST",
-					data: {
-						firstname : firstname,
-						lastname : lastname,
-						username : username,
-						email : email,
-						phoneno : phoneno,
-						referencecode : referencecode,
-						referenceid : referenceid,
-							}, 
+                    jQuery.ajax({
+                    type: "POST",	      
                     url: "<?php echo get_stylesheet_directory_uri();?>/template/mailpw.php",
+					data: fd,
+					contentType: false, 
+					processData: false,
                    // dataType: 'json',
                     success: 
                     function(data) {
@@ -130,15 +149,3 @@ messages: {
                 
             });    
 </script>
-<?php
-if(isset($_POST['idproof'])){
-	$my_folder = "upload/";
-if (move_uploaded_file($_FILES['idproof']['tmp_name'], $my_folder . $_FILES['idproof']['name'])) {
-    echo 'Received file' . $_FILES['idproof']['name'] . ' with size ' . $_FILES['idproof']['size'];
-} else {
-    echo 'Upload failed!';
-
-    var_dump($_FILES['idproof']['error']);
-}
-}
-?>

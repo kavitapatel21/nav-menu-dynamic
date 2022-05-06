@@ -86,3 +86,28 @@ function new_modify_user_table( $column ) {
 }
 add_filter( 'manage_users_columns', 'new_modify_user_table' );
 
+function upload_image()
+{
+    
+        $filename = $_FILES['image']['name'];
+
+        $location = "upload/";// Your desired location
+        $imageFileType = pathinfo($location, PATHINFO_EXTENSION);
+        $imageFileType = strtolower($imageFileType);
+
+        $valid_extionsions = array("jpg", "jpeg", "png");
+
+        $response = 0;
+
+        if (in_array($imageFileType, $valid_extionsions)) {
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $location)) {
+                $response = $location; // this is to return the file path after upload
+            }
+        }
+        echo $response;
+        exit;
+
+}
+add_action("wp_ajax_upload_image", "upload_image");
+add_action("wp_ajax_nopriv_upload_image", "upload_image");
+
