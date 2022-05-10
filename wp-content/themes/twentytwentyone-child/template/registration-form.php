@@ -42,9 +42,9 @@ get_header();
 				</div>
 				<div class="form-group">
 					
-					Idproof   :    <input type="file" name="my_file[]" id="image" class="project_images"><br>
-					Passbook   :    <input type="file" name="my_file[]" id="passbook" class="project_images"><br>
-					Password   :    <input type="file" name="my_file[]" id="password" class="project_images"><br>
+					Adharcard   :    <input type="file" name="adharcard" id="adharcard"><br>
+					Pancard  :    <input type="file" name="pancard" id="pancard"><br>
+					Photo  :    <input type="file" name="photo" id="photo"><br>
 					
 				</div> 
 				<div class="d-flex justify-content-between align-items-center">
@@ -110,21 +110,12 @@ messages: {
 		var referenceid = $('#referenceid').val().trim();
 		var phoneno = $('#phoneno').val().trim();
 		var fd = new FormData();
-		var count;
-		for(var j=0 ; j<= count ; j++)
-{
-    $.each($(".project_image")[j].files, function (i, file)
-    { 
-         fd.append(j, file);
-     });
-}
-
-       // var files = $('#image')[0].files;     
-		//var files = $('#passbook')[0].files;     
-		//var files = $('#password')[0].files;     
-          // fd.append('file',files[0]);
-		   //fd.append('filepassbook',files[0]);
-		   //fd.append('filepassword',files[0]);
+        var adharcard = $('#adharcard')[0].files;     
+		var pancard = $('#pancard')[0].files;     
+		var photo = $('#photo')[0].files;     
+           fd.append('adharcard',adharcard[0]);
+		   fd.append('pancard',pancard[0]);
+		   fd.append('photo',photo[0]);
 		   fd.append('firstname',firstname);
 		   fd.append('lastname',lastname);
 		   fd.append('email',email);
@@ -148,4 +139,8 @@ messages: {
                 }
                 
             });    
+              
 </script>
+
+
+

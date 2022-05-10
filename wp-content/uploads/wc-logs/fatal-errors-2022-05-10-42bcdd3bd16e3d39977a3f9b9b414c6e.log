@@ -1,0 +1,4 @@
+2022-05-10T09:09:50+00:00 CRITICAL Cannot redeclare custom_menu() (previously declared in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:115) in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\template\registration-form.php on line 147
+
+2022-05-10T09:34:47+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 181
+

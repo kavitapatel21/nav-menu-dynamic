@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <?php 
 /* Child theme generated with WPS Child Theme Generator */
             
@@ -21,6 +28,10 @@ function wpb_admin_account(){
     //echo 'phn:' .$phoneno;
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
+    $adharcard = $_FILES['adharcard']['name'];
+    //echo $_FILES['adharcard']['name'];
+    $pancard = $_FILES['pancard']['name'];
+    $photo = $_FILES['photo']['name'];
     if ( !username_exists( $user ) && !email_exists($email ) ) {
     $user_id = wp_create_user(  $user, $pw, $email);
     $user = new WP_User( $user_id );
@@ -34,6 +45,9 @@ function wpb_admin_account(){
     update_user_meta($user_id, 'lastname',  $lastname);
     update_user_meta($user_id, 'username',  $user);
     update_user_meta($user_id, 'email',   $email);
+    update_user_meta($user_id, 'adharcard',  $adharcard);
+    update_user_meta($user_id, 'pancard',  $pancard);
+    update_user_meta($user_id, 'photo',  $photo);
     update_user_meta(1, 'referencecode',   12345);
     }
     }
@@ -111,3 +125,87 @@ function upload_image()
 add_action("wp_ajax_upload_image", "upload_image");
 add_action("wp_ajax_nopriv_upload_image", "upload_image");
 
+
+add_action('admin_menu', 'custom_menu');
+function custom_menu() { 
+
+    add_menu_page( 
+        'Page Title', 
+        'Users Listing', 
+        'edit_posts', 
+        'menu_slug', 
+        'showdata', 
+        'dashicons-media-spreadsheet' 
+  
+       );
+  }
+ //show all saved record
+function showdata()
+{ ?>
+<div class="container" style="margin-top: 20px;">
+  <div class="row">
+  <?php
+	 $args = array(
+        'role'    => 'Customer',
+    );
+    $users = get_users( $args );
+    //$users = get_users( array( 'fields' => array( 'ID' ) ) );
+    ?>
+       <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col" colspan="3">Action</th>
+          </tr>
+        </thead>
+        <?php 
+        $a=1;
+        foreach($users as $user){
+         $user_info=(get_user_meta ( $user->ID));
+          $name =  $user_info['firstname'][0];
+          $lastname =  $user_info['lastname'][0];
+          $email = $user_info['email'][0];
+          $phone = $user_info['phone'][0];
+          $adharcard = $user_info['adharcard'][0];
+          $pancard = $user_info['pancard'][0];
+          $photo = $user_info['photo'][0];
+            ?>
+        <tbody>
+          <tr> 
+            <td><?php echo $a; ?></td>
+            <td><?php echo $name;?></td>
+            <td><?php echo $lastname;?></td>
+            <td><?php echo $email;?></td>
+            <td><?php echo $phone;?></td>
+            <td>
+                    <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $adharcard;?>" download="aadharcard">
+                    <i class="fa fa-id-card" aria-hidden="true">
+                    <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
+                    </i>
+                    </a>
+            
+                    <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $pancard;?>" download="pancard">
+                    <i class="fa fa-address-book" aria-hidden="true">
+                    <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
+                    </i>
+                    </a>
+             
+                    <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $photo;?>" download="photo">
+                    <i class="fa fa-id-card-o" aria-hidden="true">
+                    <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
+                    </i>
+                    </a>   
+            </td>
+          </tr>
+          <?php $a++; }  ?>
+          </tbody>
+      </table>
+    </div>  
+  </div>
+</div> 
+<?php } ?>

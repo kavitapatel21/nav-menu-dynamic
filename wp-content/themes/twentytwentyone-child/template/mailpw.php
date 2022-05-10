@@ -1,19 +1,30 @@
 <?php
+ //$adharcard = $_FILES['adharcard']['name'];
+// echo 'filename:'.$adharcard;
 echo "<pre>";
 print_r($_POST);
 echo "<br>";
 echo "<pre>";
 print_r($_FILES);
 echo "<br>";
-echo 'filename:'.$_FILES['file']['name'];
+foreach($_FILES as $file){
+	//echo $file['name']; 
+	echo $file['name'].'</br>'; 
+	echo $file['tmp_name'].'</br>'; 
+	move_uploaded_file($file['tmp_name'], "upload/".$file["name"]);
+  }
+  
+
+/**echo 'filename:'.$_FILES['file']['name'];
 $target_path = "upload/";
 $target_path = $target_path . basename( $_FILES['file']['name']); 
 if(move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) {
    echo "The file ".  basename( $_FILES['file']['name'])."has been uploaded";        
 } else{
    echo "There was an error uploading the file, please try again!";
-}  
-die;
+} */ 
+//die;
+
 
 require_once("../../../../wp-config.php");
 require_once("../../../../wp-load.php");
