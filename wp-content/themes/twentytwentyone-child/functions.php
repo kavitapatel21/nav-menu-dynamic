@@ -124,11 +124,11 @@ function upload_image()
 }
 add_action("wp_ajax_upload_image", "upload_image");
 add_action("wp_ajax_nopriv_upload_image", "upload_image");
+?>
 
-
+<?php
 add_action('admin_menu', 'custom_menu');
 function custom_menu() { 
-
     add_menu_page( 
         'Page Title', 
         'Users Listing', 
@@ -136,7 +136,6 @@ function custom_menu() {
         'menu_slug', 
         'showdata', 
         'dashicons-media-spreadsheet' 
-  
        );
   }
  //show all saved record
@@ -145,13 +144,68 @@ function showdata()
 <div class="container" style="margin-top: 20px;">
   <div class="row">
   <?php
-	 $args = array(
-        'role'    => 'Customer',
+   $search = ( isset($_GET["as"]) ) ? sanitize_text_field($_GET["as"]) : false ;
+   //$search="zx";
+  // print_r($search);
+	$count_args  = array(
+        'role'      => 'Customer',
     );
+    $user = get_users(  $count_args );
+    $total_rows = count($user);
+    if (!isset ($_GET['paged']) ) {  
+        $page_number = 1;  
+    } else {  
+        $page_number = $_GET['paged'];   
+    } 
+    $limit = 3;  // variable to store the number of rows per page  
+    $offset = ($page_number - 1) * $limit;  // get the initial page number
+    $total_pages = ceil ($total_rows / $limit);   // get the required number of pages
+    if ($search){
+        //echo "hi";
+    $args  = array(
+        'role'      => 'Customer',
+        's' => '*'.$search.'*',
+        'meta_query' => array(
+            'relation' => 'OR',
+            array(
+                'key'     => 'firstname',
+                'value'   => $search,
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key'     => 'lastname',
+                'value'   => $search,
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key'     => 'email',
+                'value'   => $search,
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key'     => 'phone',
+                'value'   => $search,
+                'compare' => 'LIKE'
+            ),   
+        )
+    ); 
     $users = get_users( $args );
-    //$users = get_users( array( 'fields' => array( 'ID' ) ) );
+}
+else {
+    $args  = array(
+        'role'      => 'Customer',
+        'number'    => $limit,
+        'offset'    => $offset,
+    ); 
+    $users = get_users( $args );
+}   
     ?>
        <div class="col-12">
+        <form method="get" id="db-search" action="<?php the_permalink() ?>">
+        <input type="text" class="field" name="search-meta" id="s" placeholder="Search" />
+        <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    <br>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -188,13 +242,11 @@ function showdata()
                     <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
                     </i>
                     </a>
-            
                     <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $pancard;?>" download="pancard">
                     <i class="fa fa-address-book" aria-hidden="true">
                     <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
                     </i>
                     </a>
-             
                     <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $photo;?>" download="photo">
                     <i class="fa fa-id-card-o" aria-hidden="true">
                     <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
@@ -208,4 +260,21 @@ function showdata()
     </div>  
   </div>
 </div> 
-<?php } ?>
+<?php
+$tag = '<div class="pagination">' ;
+$tag .= paginate_links( array(
+        'base'              => add_query_arg('paged','%#%'),
+        'format'            => '',
+        'current'           => $page_number,
+        'total'             =>  $total_pages,
+        'prev_next'         => True,
+        'prev_text'         => __('«'),
+        'next_text'         => __('»'),
+        'before_page_number' => '<span class="pagenum" style="color:blue;">',
+        'after_page_number'  => '</span>'
+    ) );
+$tag .= '</div>';
+echo $tag; 
+}
+?>
+
