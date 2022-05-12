@@ -2,10 +2,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <?php 
+//Working code without page reload
 /* Child theme generated with WPS Child Theme Generator */
             
 if ( ! function_exists( 'b7ectg_theme_enqueue_styles' ) ) {            
@@ -100,33 +101,6 @@ function new_modify_user_table( $column ) {
 }
 add_filter( 'manage_users_columns', 'new_modify_user_table' );
 
-function upload_image()
-{
-    
-        $filename = $_FILES['image']['name'];
-
-        $location = "upload/";// Your desired location
-        $imageFileType = pathinfo($location, PATHINFO_EXTENSION);
-        $imageFileType = strtolower($imageFileType);
-
-        $valid_extionsions = array("jpg", "jpeg", "png");
-
-        $response = 0;
-
-        if (in_array($imageFileType, $valid_extionsions)) {
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $location)) {
-                $response = $location; // this is to return the file path after upload
-            }
-        }
-        echo $response;
-        exit;
-
-}
-add_action("wp_ajax_upload_image", "upload_image");
-add_action("wp_ajax_nopriv_upload_image", "upload_image");
-?>
-
-<?php
 add_action('admin_menu', 'custom_menu');
 function custom_menu() { 
     add_menu_page( 
@@ -136,7 +110,7 @@ function custom_menu() {
         'menu_slug', 
         'showdata', 
         'dashicons-media-spreadsheet' 
-       );
+    );
   }
  //show all saved record
 function showdata()
@@ -144,9 +118,6 @@ function showdata()
 <div class="container" style="margin-top: 20px;">
   <div class="row">
   <?php
-   $search = ( isset($_GET["as"]) ) ? sanitize_text_field($_GET["as"]) : false ;
-   //$search="zx";
-  // print_r($search);
 	$count_args  = array(
         'role'      => 'Customer',
     );
@@ -160,52 +131,20 @@ function showdata()
     $limit = 3;  // variable to store the number of rows per page  
     $offset = ($page_number - 1) * $limit;  // get the initial page number
     $total_pages = ceil ($total_rows / $limit);   // get the required number of pages
-    if ($search){
-        //echo "hi";
-    $args  = array(
-        'role'      => 'Customer',
-        's' => '*'.$search.'*',
-        'meta_query' => array(
-            'relation' => 'OR',
-            array(
-                'key'     => 'firstname',
-                'value'   => $search,
-                'compare' => 'LIKE'
-            ),
-            array(
-                'key'     => 'lastname',
-                'value'   => $search,
-                'compare' => 'LIKE'
-            ),
-            array(
-                'key'     => 'email',
-                'value'   => $search,
-                'compare' => 'LIKE'
-            ),
-            array(
-                'key'     => 'phone',
-                'value'   => $search,
-                'compare' => 'LIKE'
-            ),   
-        )
-    ); 
-    $users = get_users( $args );
-}
-else {
+
     $args  = array(
         'role'      => 'Customer',
         'number'    => $limit,
         'offset'    => $offset,
     ); 
     $users = get_users( $args );
-}   
     ?>
-       <div class="col-12">
-        <form method="get" id="db-search" action="<?php the_permalink() ?>">
-        <input type="text" class="field" name="search-meta" id="s" placeholder="Search" />
-        <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    <br>
+       <div class="col-12">       
+        <input type="text" class="field" name="search-meta" id="search-meta" placeholder="Search" />
+        <input type="button" name="search" value="Search" class="btn-search">
+        <div id="datafetch">
+        </div>
+
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -239,17 +178,14 @@ else {
             <td>
                     <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $adharcard;?>" download="aadharcard">
                     <i class="fa fa-id-card" aria-hidden="true">
-                    <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
                     </i>
                     </a>
                     <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $pancard;?>" download="pancard">
                     <i class="fa fa-address-book" aria-hidden="true">
-                    <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
                     </i>
                     </a>
                     <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $photo;?>" download="photo">
                     <i class="fa fa-id-card-o" aria-hidden="true">
-                    <img src="<?php echo get_stylesheet_directory_uri();?>/template/download/">
                     </i>
                     </a>   
             </td>
@@ -276,5 +212,134 @@ $tag .= paginate_links( array(
 $tag .= '</div>';
 echo $tag; 
 }
+// add the ajax fetch js
+add_action( 'admin_footer', 'ajax_fetch' );
+function ajax_fetch() {
 ?>
+	<script type="text/javascript">
+	jQuery('input[name="search"]').on('click', function(){
+
+	    jQuery.ajax({
+	        url : '<?php echo admin_url('admin-ajax.php'); ?>',
+	        type : 'POST',
+	        data : { 
+	        	action : 'data_fetch', 
+	        	search : jQuery('#search-meta').val(),
+	        },
+	        success: function(data) {
+                jQuery('#datafetch').html( data );
+	        }
+	    });
+
+	});
+	</script>
+ <?php
+}
+
+
+// the ajax function
+add_action('wp_ajax_data_fetch' , 'data_fetch');
+add_action('wp_ajax_nopriv_data_fetch','data_fetch');
+//add_action('init','data_fetch');
+function data_fetch(){
+    $search = $_POST['search'];
+    //echo 'search:'. $search;
+if ($search){
+    //echo "hi";
+$args  = array(
+    'role'      => 'Customer',
+    's' => '*'.$search.'*',
+    'meta_query' => array(
+        'relation' => 'OR',
+        array(
+            'key'     => 'firstname',
+            'value'   => $search,
+            'compare' => 'LIKE'
+        ),
+        array(
+            'key'     => 'lastname',
+            'value'   => $search,
+            'compare' => 'LIKE'
+        ),
+        array(
+            'key'     => 'email',
+            'value'   => $search,
+            'compare' => 'LIKE'
+        ),
+        array(
+            'key'     => 'phone',
+            'value'   => $search,
+            'compare' => 'LIKE'
+        ),   
+    )
+); 
+$users = get_users( $args );
+}
+else {
+$args  = array(
+    'role'      => 'Customer',
+); 
+$users = get_users( $args );
+}   
+?>
+   <div class="col-12">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Phone</th>
+        <th scope="col" colspan="3">Action</th>
+      </tr>
+    </thead>
+    <?php 
+    $a=1;
+    foreach($users as $user){
+     $user_info=(get_user_meta ( $user->ID));
+      $name =  $user_info['firstname'][0];
+      $lastname =  $user_info['lastname'][0];
+      $email = $user_info['email'][0];
+      $phone = $user_info['phone'][0];
+      $adharcard = $user_info['adharcard'][0];
+      $pancard = $user_info['pancard'][0];
+      $photo = $user_info['photo'][0];
+        ?>
+    <tbody>
+      <tr> 
+        <td><?php echo $a; ?></td>
+        <td><?php echo $name;?></td>
+        <td><?php echo $lastname;?></td>
+        <td><?php echo $email;?></td>
+        <td><?php echo $phone;?></td>
+        <td>
+                <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $adharcard;?>" download="aadharcard">
+                <i class="fa fa-id-card" aria-hidden="true">
+                </i>
+                </a>
+                <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $pancard;?>" download="pancard">
+                <i class="fa fa-address-book" aria-hidden="true">
+                </i>
+                </a>
+                <a href="<?php echo get_stylesheet_directory_uri();?>/template/upload/<?php echo $photo;?>" download="photo">
+                <i class="fa fa-id-card-o" aria-hidden="true">
+                </i>
+                </a>   
+        </td>
+      </tr>
+      <?php $a++; }  ?>
+      </tbody>
+  </table>
+</div>  
+</div>
+</div> 
+<?php
+die();
+}
+?>
+
+
+
+
 
