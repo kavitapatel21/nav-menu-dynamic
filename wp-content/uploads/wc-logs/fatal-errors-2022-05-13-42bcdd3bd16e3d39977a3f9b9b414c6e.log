@@ -1,0 +1,54 @@
+2022-05-13T11:01:24+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:263
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): view_details('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-admin\admin.php(259): do_action('admin_page_data...')
+#4 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 263
+
+2022-05-13T13:47:02+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:267
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): view_details('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-admin\admin.php(259): do_action('admin_page_data...')
+#4 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 267
+
+2022-05-13T13:48:26+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_User as array in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:267
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): view_details('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-admin\admin.php(259): do_action('admin_page_data...')
+#4 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 267
+
+2022-05-13T13:49:24+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_User as array in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:267
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): view_details('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-admin\admin.php(259): do_action('admin_page_data...')
+#4 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 267
+
+2022-05-13T13:51:33+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_User as array in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:264
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): view_details('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-admin\admin.php(259): do_action('admin_page_data...')
+#4 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 264
+
+2022-05-13T13:54:19+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_User as array in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:266
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): view_details('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-admin\admin.php(259): do_action('admin_page_data...')
+#4 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 266
+

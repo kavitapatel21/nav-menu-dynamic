@@ -168,3 +168,28 @@ ul.top-menu ul > li{                                        /* Separator */
     max-width: 400px;
   }
 }
+
+
+/* pagination design*/
+div.search{
+  margin-bottom: 10px;
+}
+.pagination {
+  justify-content: center;
+}
+.page-numbers {
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0 2px 0 0;
+	border: 1px solid #a09696;
+	line-height: 1;
+	text-decoration: none;
+	border-radius: 2px;
+	font-weight: 600;
+
+}
+.page-numbers.current,
+a.page-numbers:hover {
+	background: #f9f9f9;
+  color: black;
+}
