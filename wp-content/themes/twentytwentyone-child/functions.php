@@ -39,7 +39,7 @@ function wpb_admin_account()
         $user_id = wp_create_user($user, $pw, $email);
         $user = new WP_User($user_id);
         $user->set_role('customer');
-       //$username=unserialize($user);
+        //$username=unserialize($user);
         //Add data in wp_usermeta table
         update_user_meta($user_id, 'referencecode', $referencecode);
         update_user_meta($user_id, 'referenceid', $referenceid);
@@ -256,25 +256,12 @@ function view_details()
                 $phone = get_user_meta($i, 'phone', true);
                 $referenceid = get_user_meta($i, 'referenceid', true);
                 $referencecode = get_user_meta($i, 'referencecode', true);
-                $users_detail = get_user_meta($i);
-             
-$users = get_users( array( 'fields' => array( 'ID' ) ) );
-foreach($users as $user){
-    $dokan_profile_setings = get_user_meta ( $user->ID,'username', true);
-    //echo "<pre>";
-    //print_r($dokan_profile_setings);
-    //$getAddress = $dokan_profile_setings['user_nicename'];
-    //echo $getAddress;
-    $uname = json_decode(json_encode($dokan_profile_setings ), true);
-    //echo "<pre>";
-    //print_r($email);
-   // foreach ($uname as $a){
-       // $username=$a['user_login'];
-       // echo $username;
-        //echo '<br>';
-   // }
-
-}
+                $users_detail = get_user_meta($i, 'username', true);
+               // echo '<pre>';
+                // print_r($users_detail);
+                //echo '<br>';
+                $username = $users_detail->data->display_name;
+                // echo $username;
             ?>
                 <h1>User Details</h1>
                 <div class="container">
@@ -285,36 +272,36 @@ foreach($users as $user){
                                 <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $firstname; ?>">
                             </div>
                             <div class="col">
-                            <h3>Lastname</h3>
+                                <h3>Lastname</h3>
                                 <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lastname; ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                        <h3>E-mail </h3>
+                            <h3>E-mail </h3>
                             <input type="text" class="form-control" id="mail" name="mail" value="<?php echo $email; ?>">
                         </div>
                         <div class="form-group">
-                        <h3>USername </h3>
+                            <h3>Username </h3>
                             <input type="text" class="form-control" id="mail" name="mail" value="<?php echo $username; ?>">
                         </div>
                         <div class="form-group">
-                        <h3>Phone</h3>
+                            <h3>Phone</h3>
                             <input type="text" class="form-control" id="phone" name="phone" value="<?php echo  $phone; ?>">
                         </div>
                         <div class="row">
                             <div class="col">
-                            <h3>Referal</h3>
+                                <h3>Referal</h3>
                                 <input type="text" class="form-control" id="referal" name="referal" value="<?php echo  $referenceid; ?>">
                             </div>
                             <div class="col">
-                            <h3>Reference</h3>
+                                <h3>Reference</h3>
                                 <input type="text" class="form-control" id="reference" name="reference" value="<?php echo $referencecode; ?>">
                             </div>
                         </div>
                         <td>
                             <button type="button" class="btn btn-link" name="btnback">
                                 <a href="<?php echo admin_url('admin.php?page=menu_slug'); ?>">
-                                Back
+                                    Back
                             </button>
                         </td>
                     </form>
