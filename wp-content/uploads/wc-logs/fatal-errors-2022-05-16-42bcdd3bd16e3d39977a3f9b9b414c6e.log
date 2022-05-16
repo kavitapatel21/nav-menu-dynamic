@@ -1,0 +1,32 @@
+2022-05-16T06:03:14+00:00 CRITICAL Uncaught Error: Call to undefined function decryptIt() in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\template\mailpw.php:64
+Stack trace:
+#0 {main}
+  thrown in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\template\mailpw.php on line 64
+
+2022-05-16T08:01:47+00:00 CRITICAL Uncaught Error: Object of class WP_User could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:487
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): misha_my_account_endpoint_content('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3142): do_action('woocommerce_acc...', '')
+#4 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): woocommerce_account_content('')
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#7 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\templates\myaccount\my-account.php(34): do_action('woocommerce_acc...')
+#8 D:\wamp64\www\navmenu\wp-content\plugins\wooco in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 487
+
+2022-05-16T08:06:49+00:00 CRITICAL syntax error, unexpected 'Firstname' (T_STRING), expecting ';' or ',' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 486
+
+2022-05-16T10:41:01+00:00 CRITICAL syntax error, unexpected end of file in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 505
+
+2022-05-16T13:25:33+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function child_items(), 0 passed in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 491 and exactly 1 expected in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:500
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php(491): child_items()
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): misha_my_account_endpoint_content('')
+#2 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#3 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#4 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3142): do_action('woocommerce_acc...', '')
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): woocommerce_account_content('')
+#6 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#7 D:\wamp64\www\navmenu\wp-includ in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 500
+

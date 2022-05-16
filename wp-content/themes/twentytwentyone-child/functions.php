@@ -257,7 +257,7 @@ function view_details()
                 $referenceid = get_user_meta($i, 'referenceid', true);
                 $referencecode = get_user_meta($i, 'referencecode', true);
                 $users_detail = get_user_meta($i, 'username', true);
-               // echo '<pre>';
+                // echo '<pre>';
                 // print_r($users_detail);
                 //echo '<br>';
                 $username = $users_detail->data->display_name;
@@ -440,4 +440,98 @@ function view_details()
 <?php
             die();
         }
+?>
+
+
+<?php
+// custom menu on my account page woocommerce
+add_filter('woocommerce_account_menu_items', 'misha_one_more_link');
+function misha_one_more_link($menu_links)
+{
+
+    // we will hook "anyuniquetext123" later
+    $new = array('anyuniquetext123' => 'Child');
+    // array_slice() is good when you want to add an element between the other ones
+    $menu_links = array_slice($menu_links, 0, 1, true)
+        + $new
+        + array_slice($menu_links, 1, NULL, true);
+    return $menu_links;
+}
+add_action('init', 'misha_add_endpoint');
+function misha_add_endpoint()
+{
+
+    // WP_Rewrite is my Achilles' heel, so please do not ask me for detailed explanation
+    add_rewrite_endpoint('anyuniquetext123', EP_PAGES);
+}
+add_action('woocommerce_account_anyuniquetext123_endpoint', 'misha_my_account_endpoint_content');
+function misha_my_account_endpoint_content()
+{
+    global $current_user;
+    global $wpdb;
+    $userid = $current_user->ID;
+    //echo $userid . '<br>';
+    $referenceid = get_user_meta($userid, 'referencecode', true);
+    //echo $referenceid.'<br>';
+    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+    //print_r($user_query);
+    $a = 1;
+    foreach ($user_query as $user) {
+        $id = $user->user_id; //the user id
+        //$value = '<span>' . $id . '</span>';
+        //echo $value;
+        $users = get_user_meta($id, 'firstname', true);
+        $usersname = get_user_meta($id, 'username', true);
+        $username =  $usersname->data->display_name;
+        echo '<p>' . $a . '</p><h5>Firstname:' . $users . '</h5>';
+        echo '<h5>Username:' . $username . '</h5>';
+        $a++;
+        if($id){
+           // echo "child";
+        child_items($id);
+    }
+    else{
+        echo "no child";
+    }
+       
+    }
+}
+
+function child_items($id){
+    $referenceid = get_user_meta($id, 'referencecode', true);
+    //echo $referenceid.'<br>';
+    global $wpdb;
+    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+    foreach ($user_query as $user) {
+        echo "child";
+        $id = $user->user_id; //the user id
+        //$value = '<span>' . $id . '</span>';
+        //echo $value;
+        $users = get_user_meta($id, 'firstname', true);
+        $usersname = get_user_meta($id, 'username', true);
+        $username =  $usersname->data->display_name;
+        echo '<h5>Firstname:' . $users . '</h5>';
+        echo '<h5>Username:' . $username . '</h5>';
+        $a = 1;
+        foreach ($user_query as $user) {
+            $id = $user->user_id; // the the user id
+            $referenceid = get_user_meta($id, 'referencecode', true);
+            //echo $referenceid.'<br>';
+            $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+            //echo '<pre>';
+            //print_r($user_query);
+            foreach ($user_query as $user) {
+                echo "child";
+                $id = $user->user_id; //the user id
+                //$value = '<span>' . $id . '</span>';
+                //echo $value;
+                $users = get_user_meta($id, 'firstname', true);
+                $usersname = get_user_meta($id, 'username', true);
+                $username =  $usersname->data->display_name;
+                echo '<h5>Firstname:' . $users . '</h5>';
+                echo '<h5>Username:' . $username . '</h5>';
+        }
+    }
+    }
+}
 ?>
