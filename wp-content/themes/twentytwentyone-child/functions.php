@@ -470,68 +470,54 @@ function misha_my_account_endpoint_content()
     global $current_user;
     global $wpdb;
     $userid = $current_user->ID;
-    //echo $userid . '<br>';
     $referenceid = get_user_meta($userid, 'referencecode', true);
-    //echo $referenceid.'<br>';
     $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
-    //print_r($user_query);
     $a = 1;
+    $ary= array();
+    
     foreach ($user_query as $user) {
+       
+        //print_r($ary);
         $id = $user->user_id; //the user id
-        //$value = '<span>' . $id . '</span>';
-        //echo $value;
         $users = get_user_meta($id, 'firstname', true);
         $usersname = get_user_meta($id, 'username', true);
         $username =  $usersname->data->display_name;
+       // $ary[] =  $usersname->data->display_name;
         echo '<p>' . $a . '</p><h5>Firstname:' . $users . '</h5>';
         echo '<h5>Username:' . $username . '</h5>';
-        $a++;
-        if($id){
-           // echo "child";
-        child_items($id);
+        $a++; 
+        $ary[]=$id;
+        //print_r($ary);   
     }
-    else{
-        echo "no child";
-    }
-       
-    }
-}
-
-function child_items($id){
-    $referenceid = get_user_meta($id, 'referencecode', true);
-    //echo $referenceid.'<br>';
-    global $wpdb;
-    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
-    foreach ($user_query as $user) {
-        echo "child";
-        $id = $user->user_id; //the user id
-        //$value = '<span>' . $id . '</span>';
-        //echo $value;
-        $users = get_user_meta($id, 'firstname', true);
-        $usersname = get_user_meta($id, 'username', true);
-        $username =  $usersname->data->display_name;
-        echo '<h5>Firstname:' . $users . '</h5>';
-        echo '<h5>Username:' . $username . '</h5>';
-        $a = 1;
-        foreach ($user_query as $user) {
-            $id = $user->user_id; // the the user id
+    if ($ary) {
+        //echo "Hi";
+       //print_r($ary);   
+       foreach($ary as $value)
+       {
+          $id = $value;
+       }
+        do {
             $referenceid = get_user_meta($id, 'referencecode', true);
-            //echo $referenceid.'<br>';
             $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
-            //echo '<pre>';
-            //print_r($user_query);
             foreach ($user_query as $user) {
                 echo "child";
                 $id = $user->user_id; //the user id
-                //$value = '<span>' . $id . '</span>';
-                //echo $value;
                 $users = get_user_meta($id, 'firstname', true);
                 $usersname = get_user_meta($id, 'username', true);
                 $username =  $usersname->data->display_name;
                 echo '<h5>Firstname:' . $users . '</h5>';
                 echo '<h5>Username:' . $username . '</h5>';
-        }
+                $referenceid = get_user_meta($id, 'referencecode', true);
+                $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+                $child=$wpdb->num_rows;
+                if($child==NULL){
+                  die();
+                }
+            }
+        } while ($id);
+    } else {
+        echo "no child";
     }
-    }
+   
 }
 ?>

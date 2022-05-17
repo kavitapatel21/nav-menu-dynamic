@@ -1,0 +1,140 @@
+2022-05-17T05:19:52+00:00 CRITICAL Uncaught Error: Object of class stdClass could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:492
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): misha_my_account_endpoint_content('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3142): do_action('woocommerce_acc...', '')
+#4 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): woocommerce_account_content('')
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#7 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\templates\myaccount\my-account.php(34): do_action('woocommerce_acc...')
+#8 D:\wamp64\www\navmenu\wp-content\plugins\wooc in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 492
+
+2022-05-17T05:20:23+00:00 CRITICAL Uncaught Error: Object of class stdClass could not be converted to string in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:492
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): misha_my_account_endpoint_content('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3142): do_action('woocommerce_acc...', '')
+#4 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): woocommerce_account_content('')
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#7 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\templates\myaccount\my-account.php(34): do_action('woocommerce_acc...')
+#8 D:\wamp64\www\navmenu\wp-content\plugins\wooc in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 492
+
+2022-05-17T05:38:16+00:00 CRITICAL syntax error, unexpected '}', expecting while (T_WHILE) in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 504
+
+2022-05-17T05:38:53+00:00 CRITICAL syntax error, unexpected '}', expecting while (T_WHILE) in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 504
+
+2022-05-17T05:49:29+00:00 CRITICAL syntax error, unexpected '}', expecting ';' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 506
+
+2022-05-17T05:50:22+00:00 CRITICAL syntax error, unexpected '}', expecting ';' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 506
+
+2022-05-17T05:52:23+00:00 CRITICAL syntax error, unexpected '}', expecting ';' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 508
+
+2022-05-17T05:54:45+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T05:55:20+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T05:55:28+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T05:56:12+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2156
+
+2022-05-17T05:57:07+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T06:03:01+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T06:09:56+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T06:11:32+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T06:15:15+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\cache.php on line 125
+
+2022-05-17T06:15:42+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T06:15:51+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T06:23:01+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\functions.php on line 5263
+
+2022-05-17T06:25:16+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 3139
+
+2022-05-17T06:28:49+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T06:32:57+00:00 CRITICAL Uncaught Error: Call to undefined function child_items() in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php:490
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): misha_my_account_endpoint_content('')
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#3 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\includes\wc-template-functions.php(3142): do_action('woocommerce_acc...', '')
+#4 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): woocommerce_account_content('')
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(474): WP_Hook->do_action(Array)
+#7 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\templates\myaccount\my-account.php(34): do_action('woocommerce_acc...')
+#8 D:\wamp64\www\navmenu\wp-content\plugins\woocommerce\includes\ in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 490
+
+2022-05-17T06:35:24+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2109
+
+2022-05-17T06:44:08+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2109
+
+2022-05-17T07:31:59+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\meta.php on line 598
+
+2022-05-17T07:51:29+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 258
+
+2022-05-17T08:40:22+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T08:56:04+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:06:37+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:13:39+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:19:54+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:22:26+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:35:05+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:36:14+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 3141
+
+2022-05-17T09:42:07+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:47:18+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T09:53:06+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T10:43:39+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\functions.php on line 669
+
+2022-05-17T10:47:13+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T11:15:41+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T11:36:55+00:00 CRITICAL syntax error, unexpected ')' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 503
+
+2022-05-17T11:38:02+00:00 CRITICAL syntax error, unexpected ')' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 503
+
+2022-05-17T11:38:57+00:00 CRITICAL syntax error, unexpected ')' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 507
+
+2022-05-17T11:39:03+00:00 CRITICAL syntax error, unexpected ')' in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 507
+
+2022-05-17T11:41:20+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T11:46:48+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 258
+
+2022-05-17T11:47:08+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T12:21:48+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T12:44:30+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T13:02:53+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\functions.php on line 665
+
+2022-05-17T13:03:51+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\user.php on line 1142
+
+2022-05-17T13:04:20+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T13:09:03+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2107
+
+2022-05-17T13:10:15+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-17T13:13:18+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2109
+
