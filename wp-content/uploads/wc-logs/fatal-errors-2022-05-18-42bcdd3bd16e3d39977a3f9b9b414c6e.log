@@ -1,0 +1,60 @@
+2022-05-18T04:48:45+00:00 CRITICAL syntax error, unexpected 'else' (T_ELSE) in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 518
+
+2022-05-18T05:11:25+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T05:20:03+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T05:22:22+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\user.php on line 1142
+
+2022-05-18T05:22:53+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T07:07:20+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\meta.php on line 599
+
+2022-05-18T07:15:11+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T07:15:41+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T07:17:55+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 478
+
+2022-05-18T07:18:51+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 478
+
+2022-05-18T07:36:10+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T08:47:11+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T08:56:25+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T09:02:54+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 258
+
+2022-05-18T10:03:11+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T10:13:05+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2162
+
+2022-05-18T10:14:27+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php on line 219
+
+2022-05-18T10:20:37+00:00 CRITICAL Maximum execution time of 120 seconds exceeded in D:\wamp64\www\navmenu\wp-includes\wp-db.php on line 2085
+
+2022-05-18T10:44:36+00:00 CRITICAL Uncaught Error: Xdebug has detected a possible infinite loop, and aborted your script with a stack depth of '256' frames in D:\wamp64\www\navmenu\wp-includes\plugin.php:959
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\plugin.php(959): spl_object_hash(Object(wpdb))
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(219): _wp_filter_build_unique_id('query', Array, false)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(265): WP_Hook->has_filter('query', Array)
+#3 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2239): has_filter('query', Array)
+#4 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2271): wpdb->placeholder_escape()
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): wpdb->remove_placeholder_escape('SELECT user_id ...')
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('SELECT user_id ...', Array)
+#7 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2016): apply_filters('query', 'SELECT user_id ...')
+#8 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2829): wpdb->query('SELE in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 959
+
+2022-05-18T10:44:52+00:00 CRITICAL Uncaught Error: Xdebug has detected a possible infinite loop, and aborted your script with a stack depth of '256' frames in D:\wamp64\www\navmenu\wp-includes\plugin.php:959
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\plugin.php(959): spl_object_hash(Object(wpdb))
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(219): _wp_filter_build_unique_id('query', Array, false)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(265): WP_Hook->has_filter('query', Array)
+#3 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2239): has_filter('query', Array)
+#4 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2271): wpdb->placeholder_escape()
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): wpdb->remove_placeholder_escape('SELECT user_id ...')
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('SELECT user_id ...', Array)
+#7 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2016): apply_filters('query', 'SELECT user_id ...')
+#8 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2829): wpdb->query('SELE in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 959
+

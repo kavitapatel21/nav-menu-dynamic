@@ -469,55 +469,92 @@ function misha_my_account_endpoint_content()
 {
     global $current_user;
     global $wpdb;
-    $userid = $current_user->ID;
-    $referenceid = get_user_meta($userid, 'referencecode', true);
-    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
     $a = 1;
-    $ary= array();
-    
+?>
+    <div id="displaychild">
+        <form method="post">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    $userid = $current_user->ID;
+                    $referenceid = get_user_meta($userid, 'referencecode', true);
+                    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+                    foreach ($user_query as $user) {
+                        $id = $user->user_id; //the user id
+                        $users = get_user_meta($id, 'firstname', true);
+                        //echo '<p>' . $a . '</p><h5>Firstname:' . $users . '</h5>';
+                        //child_items($id);
+                        $a++;
+                    ?>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $users; ?></td>
+                                <td>
+                                    <input type="button" name="viewteam" value="View Team" class="btn-search">
+                                    <input type="hidden" class="form-control" id="userid" name="userid" value="<?php echo $id; ?>">
+                                </td>
+                            </tr>
+                            
+                        <?php } ?>
+                        </tbody>
+                </table>
+            </div>
+    </div>
+    </div>
+    </form>
+    </div>
+<?php
+}
+
+add_action('wp_ajax_ajaxcall', 'displaydata');
+add_action('wp_ajax_ajaxcall', 'displaydata');
+function displaydata(){
+  $id=$_POST['search'];
+  child_items($id); 
+  die(); 
+}
+
+function child_items($id)
+{
+    global $wpdb;
+    $referenceid = get_user_meta($id, 'referencecode', true);
+    $name = get_user_meta($id, 'firstname', true);
+    echo $name.'<br>';
+   
+    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
     foreach ($user_query as $user) {
-       
-        //print_r($ary);
-        $id = $user->user_id; //the user id
-        $users = get_user_meta($id, 'firstname', true);
-        $usersname = get_user_meta($id, 'username', true);
-        $username =  $usersname->data->display_name;
-       // $ary[] =  $usersname->data->display_name;
-        echo '<p>' . $a . '</p><h5>Firstname:' . $users . '</h5>';
-        echo '<h5>Username:' . $username . '</h5>';
-        $a++; 
-        $ary[]=$id;
-        //print_r($ary);   
-    }
-    if ($ary) {
-        //echo "Hi";
-       //print_r($ary);   
-       foreach($ary as $value)
-       {
-          $id = $value;
-       }
-        do {
-            $referenceid = get_user_meta($id, 'referencecode', true);
-            $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
-            foreach ($user_query as $user) {
-                echo "child";
-                $id = $user->user_id; //the user id
-                $users = get_user_meta($id, 'firstname', true);
-                $usersname = get_user_meta($id, 'username', true);
-                $username =  $usersname->data->display_name;
-                echo '<h5>Firstname:' . $users . '</h5>';
-                echo '<h5>Username:' . $username . '</h5>';
-                $referenceid = get_user_meta($id, 'referencecode', true);
-                $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
-                $child=$wpdb->num_rows;
-                if($child==NULL){
-                  die();
-                }
-            }
-        } while ($id);
-    } else {
-        echo "no child";
+        $childid = $user->user_id; //the user id
+        child_items($childid);
     }
    
+}
+
+// add the ajax fetch js
+add_action('wp_footer', 'ajax_data');
+function ajax_data()
+{
+?>
+    <script type="text/javascript">
+        jQuery('input[name="viewteam"]').on('click', function() {
+            jQuery.ajax({
+                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                type: 'POST',
+                data: {
+                    action: 'ajaxcall',
+                    search: jQuery('#userid').val(),
+                },
+                success: function(data) {
+                    jQuery('#displaychild').html(data);
+                }
+            });
+        });
+    </script>
+<?php
 }
 ?>
