@@ -469,7 +469,6 @@ function misha_my_account_endpoint_content()
 {
     global $current_user;
     global $wpdb;
-    $a = 1;
 ?>
     <div id="displaychild">
         <form method="post">
@@ -488,19 +487,27 @@ function misha_my_account_endpoint_content()
                     foreach ($user_query as $user) {
                         $id = $user->user_id; //the user id
                         $users = get_user_meta($id, 'firstname', true);
-                        //echo '<p>' . $a . '</p><h5>Firstname:' . $users . '</h5>';
-                        //child_items($id);
-                        $a++;
                     ?>
                         <tbody>
                             <tr>
                                 <td><?php echo $users; ?></td>
                                 <td>
-                                    <input type="button" name="viewteam" value="View Team" class="btn-search">
-                                    <input type="hidden" class="form-control" id="userid" name="userid" value="<?php echo $id; ?>">
+                                    <?php
+                                    $referenceid = get_user_meta($id, 'referencecode', true);
+                                    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+                                    $num_rows = count( $user_query ); //PHP count()
+                                    if ($num_rows>0) {
+                                ?>
+                                        <input type="button" name="childid" id="childid" value="View Team" class="team" data-id="<?php echo $id; ?>">
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <input type="button" name="childid" id="childid" value="No Team">
+                                <?php
+                                    }
+                                ?>
                                 </td>
                             </tr>
-                            
                         <?php } ?>
                         </tbody>
                 </table>
@@ -514,25 +521,63 @@ function misha_my_account_endpoint_content()
 
 add_action('wp_ajax_ajaxcall', 'displaydata');
 add_action('wp_ajax_ajaxcall', 'displaydata');
-function displaydata(){
-  $id=$_POST['search'];
-  child_items($id); 
-  die(); 
+function displaydata()
+{
+    $id = $_POST['search'];
+    child_items($id);
+    exit();
 }
 
 function child_items($id)
 {
     global $wpdb;
-    $referenceid = get_user_meta($id, 'referencecode', true);
-    $name = get_user_meta($id, 'firstname', true);
-    echo $name.'<br>';
-   
-    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
-    foreach ($user_query as $user) {
-        $childid = $user->user_id; //the user id
-        child_items($childid);
-    }
-   
+?>
+    <div id="displaychild">
+        <form method="post">
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    $referenceid = get_user_meta($id, 'referencecode', true);
+                    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+                    foreach ($user_query as $user) {
+                        $id = $user->user_id; //the user id
+                        $users = get_user_meta($id, 'firstname', true);
+                    ?>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $users; ?></td>
+                                <td>
+                                    <?php
+                                    $referenceid = get_user_meta($id, 'referencecode', true);
+                                    $user_query = $wpdb->get_results("SELECT user_id FROM wp_usermeta WHERE (meta_key = 'referenceid' AND meta_value = '" .  $referenceid . "')");
+                                    $num_rows = count( $user_query ); //PHP count()
+                                        if ($num_rows>0) {
+                                    ?>
+                                            <input type="button" name="childid" id="childid" value="View Team" class="team" data-id="<?php echo $id; ?>">
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <input type="button" name="childid" id="childid" value="No Team">
+                                    <?php
+                                        }
+                                    ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                </table>
+            </div>
+    </div>
+    </div>
+    </form>
+    </div>
+<?php
 }
 
 // add the ajax fetch js
@@ -541,17 +586,19 @@ function ajax_data()
 {
 ?>
     <script type="text/javascript">
-        jQuery('input[name="viewteam"]').on('click', function() {
+        $(document).on('click', '.team', function(e) {
             jQuery.ajax({
                 url: '<?php echo admin_url('admin-ajax.php'); ?>',
                 type: 'POST',
                 data: {
+                    //id: $(this).val(),
                     action: 'ajaxcall',
-                    search: jQuery('#userid').val(),
+                    search: jQuery(this).attr('data-id'),
                 },
                 success: function(data) {
                     jQuery('#displaychild').html(data);
-                }
+                    //console.log(data);
+                },
             });
         });
     </script>

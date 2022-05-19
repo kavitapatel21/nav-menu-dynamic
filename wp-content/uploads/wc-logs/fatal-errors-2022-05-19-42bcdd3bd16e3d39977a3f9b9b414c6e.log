@@ -1,0 +1,50 @@
+2022-05-19T05:29:22+00:00 CRITICAL Uncaught Error: Xdebug has detected a possible infinite loop, and aborted your script with a stack depth of '256' frames in D:\wamp64\www\navmenu\wp-includes\plugin.php:959
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\plugin.php(959): spl_object_hash(Object(wpdb))
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(219): _wp_filter_build_unique_id('query', Array, false)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(265): WP_Hook->has_filter('query', Array)
+#3 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2239): has_filter('query', Array)
+#4 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2271): wpdb->placeholder_escape()
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): wpdb->remove_placeholder_escape('SELECT user_id ...')
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('SELECT user_id ...', Array)
+#7 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2016): apply_filters('query', 'SELECT user_id ...')
+#8 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2829): wpdb->query('SELE in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 959
+
+2022-05-19T05:29:28+00:00 CRITICAL Uncaught Error: Xdebug has detected a possible infinite loop, and aborted your script with a stack depth of '256' frames in D:\wamp64\www\navmenu\wp-includes\plugin.php:959
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\plugin.php(959): spl_object_hash(Object(wpdb))
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(219): _wp_filter_build_unique_id('query', Array, false)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(265): WP_Hook->has_filter('query', Array)
+#3 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2239): has_filter('query', Array)
+#4 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2271): wpdb->placeholder_escape()
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): wpdb->remove_placeholder_escape('SELECT user_id ...')
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('SELECT user_id ...', Array)
+#7 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2016): apply_filters('query', 'SELECT user_id ...')
+#8 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2829): wpdb->query('SELE in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 959
+
+2022-05-19T05:29:42+00:00 CRITICAL Uncaught Error: Xdebug has detected a possible infinite loop, and aborted your script with a stack depth of '256' frames in D:\wamp64\www\navmenu\wp-includes\plugin.php:959
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\plugin.php(959): spl_object_hash(Object(wpdb))
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(219): _wp_filter_build_unique_id('query', Array, false)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(265): WP_Hook->has_filter('query', Array)
+#3 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2239): has_filter('query', Array)
+#4 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2271): wpdb->placeholder_escape()
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): wpdb->remove_placeholder_escape('SELECT user_id ...')
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('SELECT user_id ...', Array)
+#7 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2016): apply_filters('query', 'SELECT user_id ...')
+#8 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2829): wpdb->query('SELE in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 959
+
+2022-05-19T05:29:45+00:00 CRITICAL Uncaught Error: Xdebug has detected a possible infinite loop, and aborted your script with a stack depth of '256' frames in D:\wamp64\www\navmenu\wp-includes\plugin.php:959
+Stack trace:
+#0 D:\wamp64\www\navmenu\wp-includes\plugin.php(959): spl_object_hash(Object(wpdb))
+#1 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(219): _wp_filter_build_unique_id('query', Array, false)
+#2 D:\wamp64\www\navmenu\wp-includes\plugin.php(265): WP_Hook->has_filter('query', Array)
+#3 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2239): has_filter('query', Array)
+#4 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2271): wpdb->placeholder_escape()
+#5 D:\wamp64\www\navmenu\wp-includes\class-wp-hook.php(307): wpdb->remove_placeholder_escape('SELECT user_id ...')
+#6 D:\wamp64\www\navmenu\wp-includes\plugin.php(189): WP_Hook->apply_filters('SELECT user_id ...', Array)
+#7 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2016): apply_filters('query', 'SELECT user_id ...')
+#8 D:\wamp64\www\navmenu\wp-includes\wp-db.php(2829): wpdb->query('SELE in D:\wamp64\www\navmenu\wp-includes\plugin.php on line 959
+
+2022-05-19T06:55:48+00:00 CRITICAL Cannot use $this as parameter in D:\wamp64\www\navmenu\wp-content\themes\twentytwentyone-child\functions.php on line 561
+
